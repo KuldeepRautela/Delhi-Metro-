@@ -152,16 +152,14 @@ public class Metro {
                 break;
         }
 
+ Log.d("station",real);
         Dline =real.split("  ");
         ArrayList<String > dline= new ArrayList<>();
         for(int i=0;i<Dline.length;i++)
-             dline.add(Dline[i]);
-        String s="";
-        for(int i=1;i< dline.size();i++){
-           if(dline.get(i-1).equals(dline.get(i))) {
-               dline.remove(i);
-               continue;
-           }
+        {
+            if(i!=0 && Dline[i].equals(Dline[i-1]))
+                continue;
+            dline.add(Dline[i]);
         }
         return dline;
     }
@@ -314,10 +312,12 @@ public class Metro {
         }
         if (len > i) {
             for (int j = len; j>=i; j--) {
+
                 temp+=line[j]+"  ";
             }
         } else {
             for (int j = len; j <=i; j++) {
+
                 temp+=line[j]+"  ";
             }
         }
@@ -335,6 +335,7 @@ public class Metro {
                 stations += line[j] + " ";
                 lines += c;
                 String temp2=temp;
+
                 temp = add(line, check, j, temp);
                 if(temp=="")
                     return;
@@ -343,5 +344,7 @@ public class Metro {
             }
         }
     }
-}
+ }
+
+
 
